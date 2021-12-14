@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=symfony
+    ports:
+      - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - dev
+
+  php:
+    container_name: php
+    build: ./docker/php
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - dev
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./:/var/www/html
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  db-data:

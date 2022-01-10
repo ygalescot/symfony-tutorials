@@ -14,6 +14,19 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <ul class="flex justify-center gap-4">
+                <li>
+                    <a href="{{ path('homepage') }}" class="text-blue-500 hover:underline">Home</a>
+                </li>
+                <li>
+                    <a href="{{ path('form_page') }}" class="text-blue-500 hover:underline">Form</a>
+                </li>
+                <li>
+                    <a href="{{ path('cms_content_page') }}" class="text-blue-500 hover:underline">CMS Content</a>
+                </li>
+            </ul>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>

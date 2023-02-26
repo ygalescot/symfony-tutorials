@@ -8,12 +8,14 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <h1 class="text-3xl font-bold text-center my-4">Hello Symfony</h1>
+        {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
     </body>
 </html>

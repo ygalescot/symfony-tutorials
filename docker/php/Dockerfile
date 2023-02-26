@@ -22,7 +22,7 @@ RUN "date"
 
 # Install nodejs and tools
 RUN apt-get install curl gnupg -y
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update && apt-get install -y nodejs
 
 # Install Yarn
@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y yarn
 
 # Type docker-php-ext-install to see available extensions
 RUN docker-php-ext-install pdo pdo_mysql intl calendar exif zip
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
 
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
 RUN echo 'alias ll="ls -l"' >> ~/.bashrc

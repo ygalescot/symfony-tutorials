@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="container mx-auto">
+        <h1 class="text-3xl font-bold text-center my-4">My Ecommerce Store</h1>
+    </header>
+    <section class="container mx-auto">
+        <div class="w-2/3 mx-auto grid grid-cols-3 gap-10">
+            {% for product in products %}
+                {% if get_ab_test_value(constant('\\App\\AbTesting\\AbTestingManager::PRODUCT_CARD_AB_TEST')) == 'a' %}
+                    {% include 'components/product_card_a.html.twig' %}
+                {% else %}
+                    {% include 'components/product_card_b.html.twig' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
